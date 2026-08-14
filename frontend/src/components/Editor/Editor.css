@@ -184,29 +184,63 @@
 
 /* Breadcrumb Bar */
 .editor-breadcrumb {
-  height: 24px;
-  min-height: 24px;
+  height: 26px;
+  min-height: 26px;
   background-color: var(--surface-editor);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
-  padding: 0 var(--space-3);
-  gap: 4px;
-  font-size: var(--text-2xs);
+  justify-content: space-between;
+  padding: 0 12px;
+  gap: 8px;
+  font-size: var(--text-2xs, 11px);
   color: var(--content-tertiary);
-  font-family: var(--font-mono);
+  font-family: var(--font-mono, monospace);
+  overflow-x: auto;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.editor-breadcrumb-segments {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   overflow-x: auto;
   white-space: nowrap;
 }
 
-.editor-breadcrumb-item {
-  display: flex;
+.editor-breadcrumb .breadcrumb-segment {
+  color: var(--content-tertiary);
+  cursor: pointer;
+  padding: 1px 4px;
+  border-radius: var(--radius-sm, 3px);
+  transition: color 0.12s ease, background-color 0.12s ease;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
 }
 
-.editor-breadcrumb-item.active {
-  color: var(--content-secondary);
+.editor-breadcrumb .breadcrumb-segment:hover {
+  color: var(--content-primary);
+  background-color: var(--surface-hover);
+}
+
+.editor-breadcrumb .breadcrumb-segment.active {
+  color: var(--content-primary);
+  font-weight: 500;
+}
+
+.editor-breadcrumb .breadcrumb-segment.split-tag {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.editor-breadcrumb .breadcrumb-separator {
+  color: var(--content-tertiary);
+  opacity: 0.5;
+  font-size: 11px;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* Editor Main Area */

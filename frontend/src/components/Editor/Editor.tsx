@@ -1292,19 +1292,37 @@ export const Editor = React.memo<EditorProps>(({
     const isMd = isMarkdownFile(tab.path);
     const isPreview = Boolean(previewTabPaths[tab.path]);
 
+    const rawPath = (workspacePath && tab.path.startsWith(workspacePath)
+      ? (workspacePath.split(/[/\\]/).pop() || '') + '/' + tab.path.slice(workspacePath.length).replace(/^[/\\]+/, '')
+      : tab.path
+    );
+    const segments = rawPath.split(/[/\\]/).filter(Boolean);
+
     return (
-      <div className="editor-breadcrumbs">
-        {isSplitTag && <span className="breadcrumb-segment" style={{ color: 'var(--accent)', fontWeight: 600 }}>[split right]</span>}
-        {isSplitTag && <span className="breadcrumb-separator">›</span>}
-        {(workspacePath && tab.path.startsWith(workspacePath)
-          ? (workspacePath.split(/[/\\]/).pop() || '') + '/' + tab.path.slice(workspacePath.length).replace(/^[/\\]+/, '')
-          : tab.path
-        ).split(/[/\\]/).map((segment, idx, arr) => (
-          <span key={idx} className="breadcrumb-segment" onClick={onOpenQuickOpen} style={{ cursor: 'pointer' }} title="Search files (Ctrl+P)">
-            {segment}
-            {idx < arr.length - 1 && <span className="breadcrumb-separator">›</span>}
-          </span>
-        ))}
+      <div className="editor-breadcrumb">
+        <div className="editor-breadcrumb-segments">
+          {isSplitTag && (
+            <>
+              <span className="breadcrumb-segment split-tag">[split right]</span>
+              <span className="breadcrumb-separator">›</span>
+            </>
+          )}
+          {segments.map((segment, idx) => {
+            const isLast = idx === segments.length - 1;
+            return (
+              <React.Fragment key={idx}>
+                <span
+                  className={`breadcrumb-segment ${isLast ? 'active' : ''}`}
+                  onClick={onOpenQuickOpen}
+                  title="Quick Open (Ctrl+P)"
+                >
+                  {segment}
+                </span>
+                {!isLast && <span className="breadcrumb-separator">›</span>}
+              </React.Fragment>
+            );
+          })}
+        </div>
 
         {isMd && (
           <div className="markdown-toggle-container">
