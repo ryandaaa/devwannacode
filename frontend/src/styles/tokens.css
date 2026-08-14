@@ -1,0 +1,254 @@
+/* ==========================================================================
+   DEVWANNACODE DESIGN SYSTEM TOKENS
+   Strict adherence to DESIGN.md v1.0 (Hairline Editorial Code Workspace)
+   ========================================================================== */
+
+:root {
+  /* --- Dark Theme Primitives --- */
+  --grey-000: #000000;
+  --grey-025: #050505;
+  --grey-050: #0A0A0A;
+  --grey-075: #0D0D0D;
+  --grey-100: #101010;
+  --grey-150: #151515;
+  --grey-200: #1C1C1C;
+  --grey-250: #1F1F1F;
+  --grey-300: #2A2A2A;
+  --grey-400: #3A3A3A;
+  --grey-500: #4A4A4A;
+  --grey-650: #7A7A7A;
+  --grey-700: #9A9A9A;
+  --grey-800: #B4B4B4;
+  --grey-900: #D4D4D4;
+  --grey-950: #EDEDED;
+  --grey-999: #FFFFFF;
+
+  /* --- Semantic Surfaces (Dark) --- */
+  --surface-app:       #050505;
+  --surface-sidebar:   #0A0A0A;
+  --surface-editor:    #0A0A0A;
+  --surface-terminal:  #080808;
+  --surface-raised:    #151515;
+  --surface-hover:     #151515;
+  --surface-active:    #1C1C1C;
+  --surface-overlay:   #101010;
+  --surface-inverse:   #EDEDED;
+
+  /* --- Content / Typography --- */
+  --content-primary:   #EDEDED;
+  --content-secondary: #B4B4B4;
+  --content-tertiary:  #7A7A7A;
+  --content-disabled:  #4A4A4A;
+  --content-inverse:   #050505;
+
+  /* --- Hairline Borders (1px everywhere) --- */
+  --border-subtle:  #1C1C1C;
+  --border-default: #2A2A2A;
+  --border-strong:  #3A3A3A;
+  --border-focus:   #EDEDED;
+
+  /* --- Status Colors --- */
+  --status-success: #3FB950;
+  --status-warning: #E3B341;
+  --status-danger:  #F85149;
+  --status-info:    #58A6FF;
+
+  /* --- Accent Color (Used sparingly) --- */
+  --accent:       #FCA126;
+  --accent-hover: #FFC470;
+  --accent-press: #C97F1E;
+
+  /* --- Fonts --- */
+  --font-ui: "Geist Sans", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", "Consolas", "Courier New", monospace;
+
+  /* --- Type Scale --- */
+  --text-2xs: 11px;
+  --text-xs:  12px;
+  --text-sm:  13px;
+  --text-md:  14px;
+  --text-base: 15px;
+  --text-lg:  16px;
+  --text-xl:  18px;
+  --text-2xl: 20px;
+
+  /* --- Spacing Rhythm (4px base) --- */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* --- Density / Component Sizing --- */
+  --control-h-xs: 24px;
+  --control-h-sm: 28px;
+  --control-h-md: 32px;
+  --control-h-lg: 36px;
+
+  --row-h-xs: 24px;
+  --row-h-sm: 28px;
+  --row-h-md: 32px;
+
+  --icon-button-size: 28px;
+
+  /* --- Border Radius (Rectangular by design) --- */
+  --radius-none: 0px;
+  --radius-sm:   3px;
+  --radius-md:   4px;
+  --radius-lg:   6px;
+
+  /* --- Shadows (Modals and Popovers only) --- */
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.65);
+  --shadow-modal:   0 24px 64px rgba(0, 0, 0, 0.85);
+
+  /* --- Transitions --- */
+  --dur-instant: 80ms;
+  --dur-fast:    140ms;
+  --dur-base:    180ms;
+  --dur-slow:    280ms;
+}
+
+/* --- Authentic Nord Theme --- */
+[data-theme="nord"] {
+  --grey-000: #262B36; /* Darker than nord0 for deep shadows */
+  --grey-025: #2B303B;
+  --grey-050: #2E3440; /* nord0: Base background */
+  --grey-075: #323845;
+  --grey-100: #353B4A;
+  --grey-150: #3B4252; /* nord1: Elevated surface */
+  --grey-200: #3E4556;
+  --grey-250: #434C5E; /* nord2: Selection/Hover */
+  --grey-300: #4C566A; /* nord3: Borders, Tertiary text */
+  --grey-400: #6B7589;
+  --grey-500: #8893A8;
+  --grey-650: #939EAE;
+  --grey-700: #A0ABB9;
+  --grey-800: #B8C2CC;
+  --grey-900: #D8DEE9; /* nord4: Primary text */
+  --grey-950: #E5E9F0; /* nord5: Secondary text */
+  --grey-999: #ECEFF4; /* nord6: Brightest text */
+
+  --surface-app:       #262B36; 
+  --surface-sidebar:   #2B303B; 
+  --surface-editor:    #2E3440;
+  --surface-terminal:  #2E3440;
+  --surface-raised:    #3B4252;
+  --surface-hover:     #434C5E;
+  --surface-active:    #4C566A;
+  --surface-overlay:   #353B4A;
+  --surface-inverse:   #ECEFF4;
+
+  --content-primary:   #ECEFF4;
+  --content-secondary: #E5E9F0;
+  --content-tertiary:  #8893A8;
+  --content-disabled:  #434C5E;
+  --content-inverse:   #2E3440;
+
+  --border-subtle:  #3B4252; 
+  --border-default: #434C5E;
+  --border-strong:  #4C566A;
+  --border-focus:   #88C0D0; 
+
+  --status-success: #A3BE8C;
+  --status-warning: #EBCB8B;
+  --status-danger:  #BF616A;
+  --status-info:    #81A1C1;
+
+  --accent:       #88C0D0; 
+  --accent-hover: #8FBCBB;
+  --accent-press: #5E81AC;
+}
+
+/* --- Light Mode Overrides --- */
+[data-theme="light"] {
+  --surface-app:       #F1F3F5;
+  --surface-sidebar:   #F8F9FA;
+  --surface-editor:    #F8F9FA;
+  --surface-terminal:  #F8F9FA;
+  --surface-raised:    #E9ECEF;
+  --surface-hover:     #DEE2E6;
+  --surface-active:    #CED4DA;
+  --surface-overlay:   #F8F9FA;
+  --surface-inverse:   #212529;
+
+  --content-primary:   #111111;
+  --content-secondary: #404040;
+  --content-tertiary:  #737373;
+  --content-disabled:  #A3A3A3;
+  --content-inverse:   #F8F9FA;
+
+  --border-subtle:  #E5E5E5;
+  --border-default: #D4D4D4;
+  --border-strong:  #A3A3A3;
+  --border-focus:   #171717;
+
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-modal:   0 24px 64px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Warm Theme (Claude-inspired) --- */
+[data-theme="warm"] {
+  --surface-app:       #FDFBF7;
+  --surface-sidebar:   #F6F4EF;
+  --surface-editor:    #FDFBF7;
+  --surface-terminal:  #FDFBF7;
+  --surface-raised:    #F0EDE6;
+  --surface-hover:     #E8E4DB;
+  --surface-active:    #E0DBD1;
+  --surface-overlay:   #FDFBF7;
+  --surface-inverse:   #2D2B2A;
+
+  --content-primary:   #2D2B2A;
+  --content-secondary: #5C5A57;
+  --content-tertiary:  #8A8782;
+  --content-disabled:  #B5B2AC;
+  --content-inverse:   #FDFBF7;
+
+  --border-subtle:  #E8E4DB;
+  --border-default: #D9D5CB;
+  --border-strong:  #B5B2AC;
+  --border-focus:   #2D2B2A;
+
+  --accent:       #D97757;
+  --accent-hover: #C56344;
+  --accent-press: #B25032;
+
+  --shadow-popover: 0 8px 24px rgba(45, 43, 42, 0.1);
+  --shadow-modal:   0 24px 64px rgba(45, 43, 42, 0.2);
+}
+
+/* --- Monochrome Theme (Vercel-inspired) --- */
+[data-theme="monochrome"] {
+  --surface-app:       #000000;
+  --surface-sidebar:   #000000;
+  --surface-editor:    #000000;
+  --surface-terminal:  #000000;
+  --surface-raised:    #111111;
+  --surface-hover:     #222222;
+  --surface-active:    #333333;
+  --surface-overlay:   #000000;
+  --surface-inverse:   #FFFFFF;
+
+  --content-primary:   #FFFFFF;
+  --content-secondary: #A0A0A0;
+  --content-tertiary:  #666666;
+  --content-disabled:  #444444;
+  --content-inverse:   #000000;
+
+  --border-subtle:  #333333;
+  --border-default: #444444;
+  --border-strong:  #666666;
+  --border-focus:   #FFFFFF;
+
+  --accent:       #FFFFFF;
+  --accent-hover: #E0E0E0;
+  --accent-press: #CCCCCC;
+
+  --status-success: #FFFFFF;
+  --status-warning: #FFFFFF;
+  --status-danger:  #FFFFFF;
+  --status-info:    #FFFFFF;
+}

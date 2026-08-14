@@ -1,0 +1,72 @@
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.dialog-modal {
+  width: 420px;
+  max-width: 90vw;
+  background-color: var(--surface-overlay);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-modal);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dialog-title {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--content-primary);
+}
+
+.dialog-message {
+  font-size: var(--text-xs);
+  color: var(--content-secondary);
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.dialog-btn {
+  height: 28px;
+  padding: 0 var(--space-3);
+  font-size: var(--text-xs);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  color: var(--content-secondary);
+}
+
+.dialog-btn:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+.dialog-btn.danger {
+  background-color: var(--status-danger);
+  border-color: var(--status-danger);
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.dialog-btn.danger:hover {
+  opacity: 0.9;
+}

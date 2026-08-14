@@ -1,0 +1,67 @@
+.lsp-overlay {
+  position: absolute;
+  z-index: 9999;
+  background-color: var(--surface-overlay);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 8px 12px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  max-width: 500px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.lsp-hover {
+  background-color: var(--surface-overlay);
+}
+
+.lsp-hover .lsp-markdown {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+.lsp-code-actions {
+  padding: 0;
+  pointer-events: auto;
+  min-width: 250px;
+}
+
+.code-actions-header {
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--bento-border);
+  color: var(--text-secondary);
+}
+
+.code-actions-list {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+.code-action-item {
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  color: var(--text-primary);
+}
+
+.code-action-item:hover, .code-action-item.selected {
+  background-color: var(--ac-hover);
+}
+
+.code-action-kind {
+  color: var(--text-secondary);
+  font-size: 11px;
+  margin-right: 4px;
+}

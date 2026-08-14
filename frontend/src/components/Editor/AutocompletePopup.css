@@ -1,0 +1,138 @@
+/* Flat, edge-to-edge completion surface. The editor remains the visual focus. */
+.autocomplete-popup {
+  position: absolute;
+  z-index: 99999;
+  width: min(420px, calc(100vw - 24px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+  font-size: 12px;
+  color: var(--text-secondary, #a8b1c2);
+  background: var(--surface-overlay, #1b202b);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+  animation: autocomplete-popup-in 90ms ease-out;
+}
+
+@keyframes autocomplete-popup-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.autocomplete-header {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  color: var(--text-muted, #727d90);
+  background: rgba(255, 255, 255, 0.018);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  line-height: 1;
+}
+
+.autocomplete-list {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+.autocomplete-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.autocomplete-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.autocomplete-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.autocomplete-item {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px 4px 8px;
+  cursor: pointer;
+  color: var(--text-secondary, #a8b1c2);
+  background: transparent;
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+  transition: background-color 80ms ease, color 80ms ease, border-color 80ms ease;
+}
+
+.autocomplete-item:last-child {
+  border-bottom-color: transparent;
+}
+
+.autocomplete-item.selected {
+  color: var(--text-primary, #f0f6fc);
+  background: rgba(88, 166, 255, 0.11);
+  border-left-color: var(--accent-color, #58a6ff);
+}
+
+.autocomplete-item:hover:not(.selected) {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.ac-kind-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-right: 8px;
+  border-radius: 2px;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ac-label {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  color: inherit;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ac-detail {
+  max-width: 150px;
+  margin-left: 12px;
+  overflow: hidden;
+  color: var(--text-muted, #727d90);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.autocomplete-item.selected .ac-detail {
+  color: rgba(220, 232, 250, 0.62);
+}
+
+/* Kind colors stay restrained because the selected row supplies the main focus. */
+.ac-kind-method, .ac-kind-function { color: #65a9ff; }
+.ac-kind-variable, .ac-kind-field { color: #c59aff; }
+.ac-kind-class, .ac-kind-interface, .ac-kind-struct { color: #e0aa3e; }
+.ac-kind-keyword { color: #55c96a; }
+.ac-kind-module { color: #f184be; }
+.ac-kind-snippet { color: #ff8179; }
+
+@media (prefers-reduced-motion: reduce) {
+  .autocomplete-popup,
+  .autocomplete-item {
+    animation: none;
+    transition: none;
+  }
+}

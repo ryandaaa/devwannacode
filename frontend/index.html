@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>DevWannaCode</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <script>
+    (function() {
+        var t = localStorage.getItem('devwannacode-theme') || 'dark';
+        var a = localStorage.getItem('devwannacode-accent');
+        
+        if (t !== 'dark') document.documentElement.setAttribute('data-theme', t);
+        if (a) document.documentElement.style.setProperty('--accent', a);
+        
+        var bgMap = {
+          'dark': '#050505',
+          'nord': '#262B36',
+          'light': '#F1F3F5',
+          'warm': '#FDFBF7',
+          'monochrome': '#000000'
+        };
+        var bg = bgMap[t] || '#050505';
+        
+        var style = document.createElement('style');
+        style.innerHTML = 'html, body { background-color: ' + bg + ' !important; margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; } #root { opacity: 0; transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1); }';
+        document.head.appendChild(style);
+      })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="./src/main.tsx" type="module"></script>
+</body>
+
+</html>

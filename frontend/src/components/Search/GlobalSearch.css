@@ -1,0 +1,218 @@
+.global-search-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--surface-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  overflow: hidden;
+  user-select: none;
+  font-family: var(--font-ui);
+}
+
+.global-search-header {
+  height: 34px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.global-search-title {
+  font-family: var(--font-ui);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  color: var(--content-tertiary);
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+}
+
+.global-search-input-box {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.global-search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-app);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0 8px;
+  height: 28px;
+  transition: border-color 0.15s ease;
+}
+
+.global-search-input-wrapper:focus-within {
+  border-color: var(--border-focus);
+}
+
+.search-input-icon {
+  color: var(--content-tertiary);
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.global-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--content-primary);
+  font-size: var(--text-xs);
+  font-family: var(--font-ui);
+}
+
+.global-search-input::placeholder {
+  color: var(--content-tertiary);
+  text-transform: lowercase;
+}
+
+.search-spinner {
+  color: var(--content-tertiary);
+  animation: spin-search 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin-search {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.search-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--content-tertiary);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.search-clear-btn:hover {
+  color: var(--content-primary);
+  background-color: var(--surface-hover);
+}
+
+.global-search-meta {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-2xs);
+  color: var(--content-tertiary);
+  text-transform: lowercase;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.global-search-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-1) 0;
+}
+
+.search-file-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-file-header {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-2);
+  color: var(--content-secondary);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  gap: 4px;
+  transition: background-color var(--dur-instant);
+}
+
+.search-file-header:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+.search-file-chevron {
+  color: var(--content-tertiary);
+  display: flex;
+  align-items: center;
+}
+
+.search-file-icon {
+  color: var(--content-tertiary);
+  flex-shrink: 0;
+}
+
+.search-file-name {
+  font-weight: 500;
+  color: var(--content-primary);
+  white-space: nowrap;
+}
+
+.search-file-path {
+  color: var(--content-tertiary);
+  font-size: var(--text-2xs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin-left: 4px;
+}
+
+.search-file-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background-color: var(--surface-active);
+  color: var(--content-secondary);
+  padding: 1px 5px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.search-matches-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-match-item {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-3) 0 var(--space-6);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  cursor: pointer;
+  gap: 8px;
+  color: var(--content-secondary);
+  transition: background-color var(--dur-instant);
+}
+
+.search-match-item:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+.search-match-line-num {
+  color: var(--content-tertiary);
+  font-size: 11px;
+  min-width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.search-match-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.search-match-highlight {
+  background-color: rgba(235, 203, 139, 0.25);
+  color: var(--status-warning, #ebcb8b);
+  font-weight: 600;
+  border-radius: 2px;
+  padding: 0 1px;
+}

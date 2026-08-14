@@ -1,0 +1,59 @@
+# Go
+bin/
+obj/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+temp_init*
+
+# Wails Build Output
+build/bin/
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.npm/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.eslintcache
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+package-lock.json
+
+# Internal App / Planning Documents & Dev Artifacts
+DESIGN.md
+EDITOR_FEATURE_PLAN.md
+prd-devwannacode.md
+ryanda.java
+style.css
+.codex/
+.gemini/
+scratch/
+*.trash_tmp
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Coverage
+coverage/
+frontend/coverage/
+
+# Environment
+.env

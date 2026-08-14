@@ -1,0 +1,79 @@
+.statusbar {
+  height: 26px;
+  min-height: 26px;
+  background-color: var(--surface-sidebar);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--content-tertiary);
+  user-select: none;
+  text-transform: lowercase;
+}
+
+.statusbar-left,
+.statusbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.statusbar-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--content-secondary);
+}
+
+.statusbar-item.interactive {
+  cursor: pointer;
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur-fast), color var(--dur-fast);
+}
+
+.statusbar-item.interactive:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+.statusbar-git-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.statusbar-git-add {
+  color: var(--status-success);
+}
+
+.statusbar-git-del {
+  color: var(--status-danger);
+}
+
+.statusbar-divider {
+  width: 1px;
+  height: 12px;
+  background-color: var(--border-subtle);
+}
+
+.statusbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+  padding: 0 var(--space-2);
+}
+
+.statusbar-tip {
+  color: var(--content-tertiary);
+  font-size: var(--text-2xs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.85;
+}

@@ -1,0 +1,468 @@
+@import "@xterm/xterm/css/xterm.css";
+
+/* Hide xterm scrollbar */
+.xterm .xterm-viewport::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.xterm .xterm-viewport {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TERMINAL CONTAINER — supports horizontal & vertical tab layouts
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: var(--surface-terminal);
+  border-left: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Horizontal layout (default): tabs on top, content below */
+.terminal-layout-horizontal {
+  flex-direction: column;
+}
+
+/* Vertical layout: tabs on right, content on left */
+.terminal-layout-vertical {
+  flex-direction: row-reverse;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TAB BAR — horizontal mode
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-tabs-bar {
+  background-color: var(--surface-sidebar);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  user-select: none;
+  /* Horizontal: fixed height */
+  height: 35px;
+  min-height: 35px;
+  flex-shrink: 0;
+}
+
+.terminal-tabs-bar--vertical {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: var(--space-2) 0 0 0;
+  border-bottom: none;
+  border-left: 1px solid var(--border-subtle);
+  border-right: none;
+  height: 100%;
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  /* Override horizontal fixed height */
+  min-height: unset;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TAB LIST
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-tabs-list {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  scrollbar-width: none;
+}
+
+.terminal-tabs-list::-webkit-scrollbar {
+  height: 3px;
+}
+
+.terminal-tabs-list--vertical {
+  flex-direction: column;
+  align-items: stretch;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  flex: 1;
+  scrollbar-width: none;
+  padding-top: 0;
+}
+
+.terminal-tabs-list--vertical::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INDIVIDUAL TAB — horizontal
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-tab {
+  height: 100%;
+  padding: 0 var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border-right: 1px solid var(--border-subtle);
+  color: var(--content-secondary);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: background-color var(--dur-instant), color var(--dur-instant);
+  flex-shrink: 0;
+  outline: none;
+}
+
+.terminal-tab:focus {
+  outline: none;
+}
+
+.terminal-tab:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+.terminal-tab.active {
+  background-color: var(--surface-terminal);
+  color: var(--content-primary);
+  font-weight: 500;
+  border-bottom: 1px solid var(--surface-terminal);
+  z-index: 1;
+}
+
+.terminal-tab-rename-input {
+  height: 20px;
+  background-color: var(--surface-app, #0a0e14);
+  border: 1px solid var(--border-focus, #88c0d0);
+  color: var(--content-primary, #ffffff);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  padding: 0 5px;
+  border-radius: 3px;
+  outline: none;
+  width: 90px;
+}
+
+/* Active accent line — horizontal: top edge */
+.terminal-tab.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INDIVIDUAL TAB — vertical mode overrides
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Vertical tab: Full-width structural block layout */
+.terminal-tab--vertical {
+  height: 44px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  border-radius: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  box-sizing: border-box;
+  color: var(--content-tertiary);
+  transition: all var(--dur-fast) ease;
+  outline: none;
+}
+
+.terminal-tab--vertical:focus {
+  outline: none;
+}
+
+/* In vertical mode the close button is a floating circle top-right */
+.terminal-tab--vertical .terminal-tab-close {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: var(--surface-overlay);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  color: var(--content-secondary);
+  opacity: 0;
+}
+
+.terminal-tab--vertical:hover .terminal-tab-close,
+.terminal-tab--vertical.active .terminal-tab-close {
+  opacity: 1;
+}
+
+.terminal-tab--vertical.active {
+  background-color: var(--surface-active);
+  color: var(--content-primary);
+}
+
+/* Hide active accent line — we use a solid pill box instead */
+.terminal-tab--vertical.active::after {
+  display: none;
+}
+
+/* Tab label */
+.terminal-tab-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* Hide label in vertical mode — icon + status dot is enough */
+.terminal-tab--vertical .terminal-tab-label {
+  display: none;
+}
+
+/* Number badge (#1, #2, ...) */
+.terminal-tab-num {
+  font-size: 10px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--content-tertiary);
+  background-color: var(--surface-3);
+  border-radius: 3px;
+  padding: 1px 5px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  flex-shrink: 0;
+  transition: color var(--dur-instant), background-color var(--dur-instant);
+}
+
+/* Completely separate class for vertical numbers to avoid CSS bleeding */
+.terminal-tab-num-vertical {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: inherit;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.terminal-tab-num.active {
+  color: var(--content-primary);
+  background-color: var(--surface-active);
+}
+
+.terminal-tab-num.exited {
+  color: var(--content-tertiary);
+  opacity: 0.5;
+}
+
+.terminal-tab-close {
+  height: 15px;
+  width: 15px;
+  border-radius: var(--radius-sm);
+  color: var(--content-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  flex-shrink: 0;
+  transition: opacity var(--dur-instant), background-color var(--dur-instant);
+}
+
+
+.terminal-tab:hover .terminal-tab-close,
+.terminal-tab.active .terminal-tab-close {
+  opacity: 1;
+}
+
+.terminal-tab-close:hover {
+  background-color: var(--surface-active);
+  color: var(--content-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACTIONS AREA (+ and orientation toggle)
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.terminal-actions--vertical {
+  flex-direction: column;
+  padding: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-top: none;
+  margin-top: 0;
+  gap: 0;
+  height: 20%;
+  min-height: 70px;
+  order: -1;
+}
+
+.terminal-action-btn {
+  height: 100%;
+  width: 40px;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: var(--content-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--dur-fast), color var(--dur-fast);
+}
+
+.terminal-action-btn:last-child {
+}
+
+.terminal-actions--vertical .terminal-action-btn {
+  flex: 1;
+  height: auto;
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.terminal-actions--vertical .terminal-action-btn:last-child {
+  border-bottom: none;
+}
+
+.terminal-action-btn:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TERMINAL CONTENT SURFACE & TITLE BAR
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-view-wrapper {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  background-color: var(--surface-terminal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.terminal-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 35px;
+  min-height: 35px;
+  padding: 0 var(--space-3);
+  background-color: var(--surface-terminal);
+  border-bottom: 1px solid var(--border-subtle);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.terminal-title-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--content-secondary);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
+.terminal-title-status {
+  color: var(--content-tertiary);
+  font-weight: 400;
+}
+
+.terminal-title-right {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-title-action {
+  height: 22px;
+  width: 22px;
+  border-radius: var(--radius-sm);
+  color: var(--content-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal-title-action:hover {
+  background-color: var(--surface-hover);
+  color: var(--content-primary);
+}
+
+.terminal-instances-area {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  width: 100%;
+  padding: 12px 16px 0px 16px;
+  box-sizing: border-box;
+}
+
+/* Active terminal instance */
+.terminal-instance {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* xterm internal elements must fill height */
+.terminal-instance .xterm {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.terminal-instance .xterm-viewport {
+  background-color: var(--surface-terminal) !important;
+  overflow-y: auto !important;
+}
+
+.terminal-instance .xterm-screen {
+  height: 100% !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EMPTY STATE
+   ═══════════════════════════════════════════════════════════════ */
+
+.terminal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 32px 40px;
+  box-sizing: border-box;
+  text-align: left;
+  color: var(--content-tertiary);
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+}
